@@ -21,13 +21,14 @@ it("editar tarea", () => {
     cy.visit("https://todomvc.com/examples/react/dist/")
     cy.get('[data-testid="text-input"]').type('Tarea 02{enter}')
 
+
 })
 
-it.only("borrar tarea", () => {
+it("borrar tarea", () => {
     cy.visit("https://todomvc.com/examples/react/dist/")
     cy.get('[data-testid="text-input"]').type('Peppa Pig{enter}')
     cy.get('button.destroy').click({force:true})
-    
+
 })
 
 it("filtrar tarea", () => {
@@ -39,12 +40,9 @@ it("filtrar tarea", () => {
     cy.get(':nth-child(1) > .view > [data-testid="todo-item-toggle"]').click()
     cy.get(':nth-child(2) > .view > [data-testid="todo-item-toggle"]').click()
     cy.get('[data-testid="footer-navigation"] > :nth-child(3) > a').click()
+    cy.get(':nth-child(1) > .view > [data-testid="todo-item-label"]').should ('be.visible')
     cy.get(':nth-child(2) > a').click()
+    cy.get(':nth-child(1) > .view > [data-testid="todo-item-label"]').should ('be.visible')
     cy.get(':nth-child(1) > a').click()
-
-
 })  
-
-
 })
-
